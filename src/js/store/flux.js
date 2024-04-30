@@ -15,6 +15,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+
+			getUsers: async () => {
+				await fetch("https://playground.4geeks.com/todo/users")
+					.then(resp => resp.json()).then(resp => setStore({users: resp}))
+
+				},
+			}
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
@@ -40,6 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		}
 	};
-};
 
 export default getState;
+
+
